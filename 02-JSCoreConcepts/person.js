@@ -15,6 +15,7 @@ class Person {
 
 let JN = new Person('Jan', 'Nowak')
 let MC = new Person('Maciej', 'Czarnik')
+con
 
 console.log(JN.getFullName())
 console.log(JN.getInitials())
