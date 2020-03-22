@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gold Chart</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+</head>
+
+<body onload="getData()">
+    <canvas id="myChart"></canvas>
+</body>
+
+</html>
+
+
+
+
+<script>
+    const getData = () => {
+        fetch("http://api.nbp.pl/api/cenyzlota/last/10")
+            .then(req => req.json())
+            .then(data => {
+                data.forEach(item => {
+                    goldChart.data.labels.push(item.data)
+                    goldChart.data.datasets[0].data.push(item.cena)
+                    goldchart.update()
+                });
+
+            })
+
+
+    }
+
+    var ctx = document.getElementById('myChart');
+    var goldChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Gold Price',
+                data: [],
+
+            }]
+        },
+        options: {}
+    });
+
+
+
+</script>

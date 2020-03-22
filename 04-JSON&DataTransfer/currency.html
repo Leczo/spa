@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Currency exchange rates</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body onload="connect()">
+    <h1>Ready States</h1>
+    <ul>
+        <li id="gbp">GBP </li>
+        <li id="eur">EUR </li>
+        <li id="usd">USD </li>
+    </ul>
+    <script>
+
+        const connect = () => {
+            let currency = ['gbp', 'eur', 'usd']
+            currency.forEach((elem) => {
+                fetch(`http://api.nbp.pl/api/exchangerates/rates/a/${elem}`)
+                    .then(req => req.json())
+                    .then(data => {
+                        console.log(data.rates[0].mid)
+                        document.getElementById(elem).innerHTML += `= ${data.rates[0].mid} zł`
+                    })
+
+            })
+        }
+    </script>
+
+</body>
+
+</html>
