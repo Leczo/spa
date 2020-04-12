@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+
+        <input type="checkbox" value="Math" id="Math" v-model="subjects">
+        <label for="Math">Math</label>
+        <input type="checkbox" value="Philosophy" id="Philosophy" v-model="subjects">
+        <label for="Philosophy">Philosophy</label>
+        <input type="checkbox" value="Biology" id="Biology" v-model="subjects">
+        <label for="Biology">Biology</label>
+        <input type="checkbox" value="Sociology" id="Sociology" v-model="subjects">
+        <label for="Sociology">Sociology</label>
+        <input type="checkbox" value="Physics" id="Physics" v-model="subjects">
+        <label for="Physics">Physics</label>
+        <p>Number of selected subjects: {{subjectsNumber}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                subjects: []
+            },
+            computed: {
+                subjectsNumber: function () {
+                    return this.subjects.length
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
