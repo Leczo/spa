@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <price></price>
+    </div>
+
+    <script>
+
+        Vue.component('price', {
+            data: function () {
+                return {
+                    value: 0,
+                    name: '',
+                    code: '',
+
+                }
+            },
+            mounted: function () {
+                fetch(`https://api.nbp.pl/api/exchangerates/rates/a/usd/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        this.value = data.rates[0].mid
+                        this.code = data.code
+                        this.name = data.currency
+                    })
+            },
+
+            template: '<div>{{code}} - {{name}} =  {{value}}zł</div>'
+        })
+
+
+        new Vue({
+            el: '#app',
+        })
+
+    </script>
+
+</body>
+
+</html>

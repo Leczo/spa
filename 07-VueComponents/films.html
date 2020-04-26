@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <movie-one></movie-one><br>
+        <movie-two></movie-two><br>
+        <movie-three></movie-three>
+    </div>
+    <p></p>
+    <script>
+
+
+        Vue.component('movie-one', {
+            data: function () {
+                return {
+                    title: 'Koń Turyński',
+                    director: 'Bella Tar',
+                    year: '2011'
+                }
+            },
+            template: '<div><h1>{{title}}</h1><p>{{director}}</p><p>{{year}}</p></div>'
+        })
+        Vue.component('movie-two', {
+            data: function () {
+                return {
+                    title: 'Persona',
+                    director: 'Ingmar Bergman',
+                    year: '1966'
+                }
+            },
+            template: '<div><h1>{{title}}</h1><p>{{director}}</p><p>{{year}}</p></div>'
+        })
+        Vue.component('movie-three', {
+            data: function () {
+                return {
+                    title: 'Frost',
+                    director: 'Fred Keleman',
+                    year: '1997'
+                }
+            },
+            template: '<div><h1>{{title}}</h1><p>{{director}}</p><p>{{year}}</p></div>'
+        })
+        new Vue({ el: '#app' })
+
+    </script>
+
+</body>
+
+</html>
